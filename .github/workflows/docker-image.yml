@@ -15,17 +15,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Login to DockerHub
+      uses: docker/login-action@v3
+      with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_SECRET }}
     - name: Build the Docker image
       id: build
       run: |
         TAG=$(date +%s)
         docker build . --file Dockerfile --tag $IMAGE_NAME:$TAG
         echo tag=$TAG >> $GITHUB_OUTPUT
-    - name: Login to Quay.io
-      uses: docker/login-action@v3
-      with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_SECRET }}
     - name: Run Tests
       env:
         TAG: ${{ steps.build.outputs.tag }}
@@ -36,7 +36,7 @@ jobs:
           -p 5000:5000 \
           $IMAGE_NAME:$TAG
         docker ps -a
-        curl localhost
+        curl localhost:5000
         curl localhost:5000/ping
         docker logs mytest >> $GITHUB_STEP_SUMMARY
     - name: Push
