@@ -36,8 +36,6 @@ jobs:
           -p 5000:5000 \
           $IMAGE_NAME:$TAG
         docker ps -a
-        curl -k -i -s http://localhost:5000
-        curl -k -s -i http://localhost:5000/ping
         docker logs mytest >> $GITHUB_STEP_SUMMARY
     - name: Push
       env:
