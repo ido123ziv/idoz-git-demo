@@ -30,4 +30,5 @@ Kubernetes is a portable, extensible, open source platform for managing containe
 * [FreeCodeCamp](https://www.youtube.com/@freecodecamp)
 * [TedTech](https://open.spotify.com/show/2w3EFVTTKEHT4ya5hqzyjZ?si=d5006775da374f11)
 * [EntryLevel](https://open.spotify.com/show/2w3EFVTTKEHT4ya5hqzyjZ?si=9f4e95ff7faf4750)
+* [Fireship](https://www.youtube.com/@Fireship)
 
